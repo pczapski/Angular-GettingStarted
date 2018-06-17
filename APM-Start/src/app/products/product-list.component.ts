@@ -13,9 +13,8 @@ export class ProductListComponent implements OnInit {
 
     set listFilter(value: string) {
         this._listFilter = value;
-        this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter): this.products;
+        this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
     }
-
 
     constructor() {
         this.filteredProducts = this.products;
@@ -27,6 +26,7 @@ export class ProductListComponent implements OnInit {
         return this.products.filter((product: IProduct) =>
             product.productName.toLocaleLowerCase().indexOf(filterBy) != -1)
     }
+
     pageTitle: string = 'Product List';
     imageWidth: number = 50;
     imageMargin: number = 2;
@@ -64,5 +64,9 @@ export class ProductListComponent implements OnInit {
 
     ngOnInit(): void {
         console.log('OnInit')
+    }
+
+    onRatingClicked(message: string): void {
+        this.pageTitle = "Product List: " + message;
     }
 }

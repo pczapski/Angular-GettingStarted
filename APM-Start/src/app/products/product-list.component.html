@@ -5,8 +5,10 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-2">Filter by:</div>
-            <div class="col-md-4"><input type="text"
-            [(ngModel)]="listFilter"></div>
+            <div class="col-md-4">
+                <input type="text"
+                       [(ngModel)]="listFilter">
+            </div>
         </div>
         <div class="row">
             <div class="col-md-6">
@@ -40,7 +42,10 @@
                 <td>{{ product.productCode | lowercase | convertToSpaces:'-'}}</td>
                 <td>{{ product.releaseDate }}</td>
                 <td>{{ product.price | currency:'USD':true:'1.2-2'}}</td>
-                <td>{{ product.starRating }}</td>
+                <td>
+                    <pm-star [rating]="product.starRating"
+                             (ratingClicked)="onRatingClicked($event)"></pm-star>
+                </td>
             </tr>
             </tbody>
         </table>
